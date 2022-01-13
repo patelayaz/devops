@@ -1,0 +1,89 @@
+<% layout(`layouts/boilerplate`) %>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center mb-3"><%= agent.name %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-4 agent-logo-column">
+          <a href="/agents/<%= agent._id %>">
+            <img src="<%= agent.logo %>" alt="<%= agent.name %>">
+          </a>
+        </div>
+        <div class="col-md-8 agent-details-column">
+          <div class="agent-address h6">
+            <%= agent.address %>
+          </div>
+          <div class="agent-phone">
+            Phone: <%= agent.phone %>
+          </div>
+          <a href="/agents/<%= agent._id %>/properties/new" class="btn btn-sm btn-success">Add Property</a>
+          <form action="<%= `/agents/${agent._id}/?_method=DELETE` %>"
+            method="post"><button class="btn btn-danger d-inline-flex"
+              type="submit">Delete Agent</button></form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h2 class="text-center">Properties listed by Agent</h2>
+      <% agent.properties.forEach(property=> { %>
+        <div class="card mb-3 property-listing-card">
+          <div class="row">
+            <div class="col-md-5 image-column">
+              <img src="<%= property.image %>" alt="<%= property.title %>">
+            </div>
+            <div class="col-md-7 data-column d-flex flex-column">
+              <div class="parameters-row">
+                <h2 class="rent-amount">
+                  £ <%= property.rent %>/month
+                </h2>
+                <div class="column">
+                  <div class="value">3</div>
+                  <div class="title">Beds</div>
+                </div>
+                <div class="column">
+                  <div class="value">3</div>
+                  <div class="title">Baths</div>
+                </div>
+              </div>
+              <div class="property-details-row">
+                <h4 class="card-title">
+                  <%= property.title %>
+                </h4>
+                <h6 class="card-title">
+                  <%= property.area %>, <%= property.city %>, <%= property.postcode %>
+                </h6>
+                <p class="card-text">| <% const max=4; for( let i=0; i <=max; i++ ) { %>
+                    <%= property.features[i] %> |
+                      <% } %>
+                </p>
+                <a href="/properties/<%= property._id %>"
+                  class="btn btn-primary">View</a>
+              </div>
+              <div class="agent-details-row mt-auto">
+                <h5 class="card-title">Listed by</h5>
+                <div class="logo-column">
+                  <a href="/agents/<%= agent._id %>">
+                    <img src="/images/agentLogos/<%= agent.name %>.jpeg" alt=""
+                      srcset="">
+                  </a>
+                </div>
+                <div class="details-column">
+                  <div class="name">
+                    <a href="/agents/<%= agent._id %>">
+                      <%= agent.name %>
+                    </a>
+                  </div>
+                  <div class="phone">
+                    <%= agent.phone %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>

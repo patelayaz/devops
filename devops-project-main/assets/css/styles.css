@@ -1,0 +1,165 @@
+/* START PROPERTY LISTING PAGE */
+.property-listing-card {
+  font: inherit;
+}
+
+.property-listing-card .image-column {
+  font: inherit;
+}
+
+.image-column img {
+  object-fit: contain;
+  max-height: 350px;
+}
+
+.property-listing-card .data-column {
+  font: inherit;
+  background-color: rgb(245, 245, 245);
+}
+
+.property-listing-card .parameters-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.25rem 1rem;
+}
+
+.parameters-row .column {
+  padding: 0.25rem 0.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.parameters-row .column .title {
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+.parameters-row .column .value {
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.property-listing-card .property-details-row {
+  padding: 0.25rem 1rem 0.5rem 1rem;
+}
+
+.property-listing-card .agent-details-row {
+  background-color: rgb(223, 223, 223);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.property-listing-card .agent-details-row .logo-column {
+  padding: 0 1rem;
+}
+
+.property-listing-card .agent-details-row .details-column {
+  font-weight: 700;
+}
+
+.property-listing-card .agent-details-row .logo-column img {
+  height: 50px;
+}
+/* END PROPERTY LISTING PAGE */
+
+/* START AGENT LISTING PAGE */
+.agent-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.agent-listing-card {
+  font: inherit;
+}
+
+.agent-listing-card .row {
+  font: inherit;
+}
+
+.agent-listing-card .row > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.agent-listing-card .agent-logo-column {
+  font: inherit;
+}
+
+.agent-logo-column a {
+  margin: 0 auto;
+}
+
+.agent-logo-column a img {
+  max-height: 75%;
+  max-width: 100%;
+}
+
+.agent-listing-card .agent-details-column {
+  font: inherit;
+}
+/* END AGENT LISTING PAGE */
+
+/* START INDIVIDUAL PROPERTY PAGE */
+.property-image {
+  font: inherit;
+}
+
+.property-image img {
+  width: 100%;
+}
+
+.property-image .control-buttons-row {
+  font: inherit;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.control-buttons-row a {
+  margin-right: 1rem;
+}
+
+.property-primary-details .parameters-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.25rem 1rem;
+}
+
+.property-primary-details .property-details-row {
+  padding: 0.25rem 1rem 0.5rem 1rem;
+}
+
+.property-primary-details .agent-details-row {
+  background-color: rgb(223, 223, 223);
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.property-primary-details .agent-details-row .logo-column {
+  padding: 0 1rem;
+}
+
+.property-primary-details .agent-details-row .details-column {
+  font-weight: 700;
+}
+
+.property-primary-details .agent-details-row .logo-column img {
+  height: 50px;
+}
+
+/* END INDIVIDUAL PROPERTY PAGE */

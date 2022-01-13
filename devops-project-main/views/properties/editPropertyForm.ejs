@@ -1,0 +1,143 @@
+<% layout(`layouts/boilerplate`) %>
+  <% const {_id, title, type, rent, area, postcode, bedrooms, bathrooms,
+    latitude, longitude, features, description}=property; %>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center mb-3">
+          Edit Property: <%= title %>
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/properties/<%= _id %>?_method=PUT" method="post"
+          class="uses-bootstrap-validation" novalidate>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label class="mb-1" for="title">Title</label>
+                <input class="form-control mb-3" type="text" name="title"
+                  id="title" placeholder="eg: 3BHK in Deansgate"
+                  value="<%= title %>" required>
+                <div class="valid-feedback">Looks good...</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="mb-1" for="rent">Rent</label>
+                <input class="form-control mb-3" type="number" name="rent"
+                  id="rent" placeholder="eg: 2" min="0" max="100000" step="5"
+                  value="<%= rent %>" required>
+                <div class="valid-feedback">Looks good...</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <div class="form-group">
+                <label class="mb-1" for="property-type">Type</label>
+                <select class="form-control" name="type" id="property-type">
+                  <option value="house ">House </option>
+                  <option value="flat">Flat</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="bungalow">Bungalow</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="mb-1" for="bathrooms">Bathrooms</label>
+                <input class="form-control mb-3" type="number" name="bathrooms"
+                  id="bathrooms" placeholder="eg: 2" min="0" max="25"
+                  value="<%= bathrooms %>" required>
+                <div class="valid-feedback">Looks good...</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="mb-1" for="bedrooms">Bedrooms</label>
+                <input class="form-control mb-3" type="number" name="bedrooms"
+                  id="bedrooms" placeholder="eg: 4" min="0" max="25"
+                  value="<%= bedrooms %>" required>
+                <div class="valid-feedback">Looks good...</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="form-group">
+                <label class="mb-1" for="area">Area</label>
+                <input class="form-control mb-3" type="text" name="area"
+                  id="area" placeholder="eg: Deansgate" value="<%= area %>"
+                  required>
+                <div class="valid-feedback">Looks good...</div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="form-group">
+                <label class="mb-1" for="postcode">Postcode</label>
+                <input class="form-control mb-3" type="text" name="postcode"
+                  id="postcode" placeholder="eg: M1 1QD" value="<%= postcode %>"
+                  required>
+                <div class="valid-feedback">Looks good...</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="mb-1" for="features">Features</label>
+            <div class="row">
+              <div class="col-md-6">
+                <% for( let i=0; i < 3; i++ ) { %>
+                  <input class="form-control mb-3" type="text" name="features"
+                    id="features" placeholder="eg: Close to train station"
+                    value="<%= features[i] %>">
+                  <% } %>
+              </div>
+              <div class="col-md-6">
+                <% for( let i=3; i < 6; i++ ) { %>
+                  <input class="form-control mb-3" type="text" name="features"
+                    id="features" placeholder="eg: Close to train station"
+                    value="<%= features[i]
+                  %>">
+                  <% } %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="mb-1" for="description">Description</label>
+            <textarea class="form-control" name="description" id="description"
+              rows="5" required>
+          <%= description %></textarea>
+          <div class="valid-feedback">Looks good...</div>
+          </div>
+          <div class="control-buttons-row py-2 d-flex">
+            <button class="btn btn-success" type="submit">Update</button>
+            <a class="btn btn-warning" href="/properties/<%= _id %>">Cancel</a>
+          </div>
+        </form>
+        <form action="<%= `/properties/${property._id}/?_method=DELETE` %>"
+          method="post"><button class="btn btn-danger d-inline-flex"
+            type="submit">Delete</button></form>
+      </div>
+    </div>
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('uses-bootstrap-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>

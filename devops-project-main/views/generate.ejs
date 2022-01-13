@@ -1,0 +1,23 @@
+<% layout(`layouts/boilerplate`) %>
+<div class="col-8 offset-2">
+  <div class="row text-center">
+    <h1 class="mb-3">Generate Data </h1>
+    <form action="/generate" method="post">
+      <div class="mb-3">
+        <label for="agents">Agents</label>
+        <input type="number" name="agents" id="agents" value="3">
+        <label for="properties">Properties</label>
+        <input type="number" name="properties" id="properties" value="10">
+        <button type="submit">Generate</button>
+      </div>
+    </form>
+  </div>
+  <% if (generationStatus) { %>
+    <div class="row text-center">
+      <div class="alert alert-success" role="alert">
+        <h4>Generation complete</h4>
+        You may view the new <a href="/agents/" class="alert-link">agents</a> and <a href="/properties/" class="alert-link">properties</a>.
+      </div>
+    </div>
+  <% } %>
+</div>

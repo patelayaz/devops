@@ -1,0 +1,84 @@
+<% layout(`layouts/boilerplate`) %>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center mb-3">
+        <%= property.title %>
+      </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 property-image">
+      <img src="<%= property.image %>" alt="<%= property.title %>">
+    </div>
+    <div class="col-md-6">
+      <div class="property-primary-details">
+        <div class="parameters-row">
+          <h2 class="rent-amount">
+            £ <%= property.rent %>/month
+          </h2>
+          <div class="column">
+            <div class="value">3</div>
+            <div class="title">Beds</div>
+          </div>
+          <div class="column">
+            <div class="value">3</div>
+            <div class="title">Baths</div>
+          </div>
+        </div>
+        <div class="property-details-row">
+          <h4 class="card-title">
+            <%= property.title %>
+          </h4>
+          <h6 class="card-title">
+            <%= property.area %>, <%= property.city %>, <%= property.postcode %>
+          </h6>
+          <p class="card-text">| <% const max=2; for( let i=0; i < max; i++ ) { %>
+              <%= property.features[i] %> |
+                <% } %>
+              <div class="control-buttons-row d-flex">
+                <a class="btn btn-primary"
+                  href="<%= `/properties/${property._id}/edit/` %>">Edit</a>
+                <form action="<%= `/properties/${property._id}/?_method=DELETE` %>" method="post"><button class="btn btn-danger d-inline-flex" type="submit">Delete</button></form>
+              </div>
+          </p>
+        </div>
+        <div class="agent-details-row mt-auto">
+          <% const agent = property.agentID; %>
+          <h5 class="card-title">Listed by</h5>
+          <div class="logo-column">
+            <a href="/agents/<%= agent._id %>">
+              <img src="/images/agentLogos/<%= agent.name %>.jpeg" alt="" srcset="">
+            </a>
+          </div>
+          <div class="details-column">
+            <div class="name">
+              <a href="/agents/<%= agent._id %>">
+                <%= agent.name %>
+              </a>
+            </div>
+            <div class="phone">
+              <%= agent.phone %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="features">
+        <h2>Features: </h2>
+        <ul>
+          <% property.features.forEach(feature=> { %>
+            <li>
+              <%= feature %>
+            </li>
+            <% }) %>
+        </ul>
+      </div>
+      <div class="description">
+        <h2>Description</h2>
+        <%= property.description %>
+      </div>
+    </div>
+  </div>

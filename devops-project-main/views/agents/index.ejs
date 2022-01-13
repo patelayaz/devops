@@ -1,0 +1,37 @@
+<% layout(`layouts/boilerplate`) %>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-center">All Agents</h1>
+    <h2 class="text-center">The UK's leading agents list on Home Finder</h2>
+    <p class="text-center px-md-5">If you're looking for a letting agent with all the right experience to helping
+    people rent or let a property, then Home Finder is the place to find one. Our
+    community of letting agents not only have a great deal of local area expertise,
+    but they also have the skills to ensure that landlords and tenants are able to
+    reach fair agreements.</p>
+  </div>
+</div>
+<div class="row my-3 agent-list">
+  <% agents.forEach(agent=> { %>
+    <div class="col-xl-4 col-md-6 col-sm-12 py-3 agent-listing-card">
+      <div class="row">
+        <div class="col-md-4 agent-logo-column">
+          <a href="/agents/<%= agent._id %>">
+            <img src="<%= agent.logo %>" alt="<%= agent.name %>">
+          </a>
+        </div>
+        <div class="col-md-8 agent-details-column">
+          <div class="agent-name h4">
+            <a href="/agents/<%= agent._id %>">
+              <%= agent.name %></a>
+          </div>
+          <div class="agent-address h6">
+            <%= agent.address %>
+          </div>
+          <div class="agent-phone">
+            Phone: <%= agent.phone %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
